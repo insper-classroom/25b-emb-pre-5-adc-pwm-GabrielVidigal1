@@ -54,7 +54,7 @@ bool timer_callback(repeating_timer_t *rt) {
 
         uint16_t result = adc_read();
         float voltage = conversion_factor*result;
-        printf("%f\n",voltage);
+        printf("%lf\n",voltage);
 
         if (voltage<1.0){
             if(timer_ativo){
