@@ -25,10 +25,42 @@ void data_task(void *p) {
 
 void process_task(void *p) {
     int data = 0;
+    int num_array =0;
+    int total =0;
+    int array[5];
+    int prox_num;
 
     while (true) {
         if (xQueueReceive(xQueueData, &data, 100)) {
+            if(num_array<5){
+                array[num_array]=data;
+                total+=data;
+                prox_num=total/5;
+            } else{
+                printf("%d\n", prox_num);
+                
+                total=total-array[0]+data;
+                prox_num=total/5;
+
+                array[0]=array[1];
+                array[1]=array[2];
+                array[2]=array[3];
+                array[3]=array[4];
+                array[4]=data;
+                
+
+                
+                //enviar prox_num
+            
+            }
+            
+            num_array+=1;
+            
+            
+            
             // implementar filtro aqui!
+             
+                     
 
 
 
